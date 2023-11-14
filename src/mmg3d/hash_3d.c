@@ -1127,6 +1127,20 @@ int MMG5_hGeom(MMG5_pMesh mesh) {
   int16_t      tag;
   int8_t       i,i1,i2;
 
+  int nnmt = 0;
+  for (k=1; k<=mesh->nt; k++) {
+    pt = &mesh->tria[k];
+    for (i=0; i<3; i++) {
+      if( (pt->tag[i] & MG_PARBDY) && !(pt->tag[i] & MG_PARBDYBDY) ) continue;
+
+      /* count nm tags */
+      if ( pt->tag[i] & MG_NOM ) {
+         ++nnmt;
+      }
+    }
+  }
+  printf("mesh->na = %d, nnmt = %d \n", mesh->na, nnmt);
+
   /* if edges exist in mesh, hash special edges from existing field */
   if ( mesh->na ) {
     if ( !mesh->htab.geom ) {
