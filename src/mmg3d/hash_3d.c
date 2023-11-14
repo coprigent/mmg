@@ -1139,12 +1139,13 @@ int MMG5_hGeom(MMG5_pMesh mesh) {
       }
     }
   }
-  printf("mesh->na = %d, nnmt = %d \n", mesh->na, nnmt);
+  //printf("mesh->na = %d, nnmt = %d \n", mesh->na, nnmt);
 
   /* if edges exist in mesh, hash special edges from existing field */
   if ( mesh->na ) {
     if ( !mesh->htab.geom ) {
-      mesh->namax = MG_MAX((MMG5_int)(1.5*mesh->na),MMG3D_NAMAX);
+      //mesh->namax = MG_MAX((MMG5_int)(1.5*mesh->na),MMG3D_NAMAX);
+      mesh->namax = MG_MAX(MG_MAX((MMG5_int)(1.5*mesh->na),(MMG5_int)(nnmt)),MMG3D_NAMAX);
       if ( !MMG5_hNew(mesh,&mesh->htab,mesh->na,3*mesh->namax) )
         return 0;
     }
@@ -1224,7 +1225,8 @@ int MMG5_hGeom(MMG5_pMesh mesh) {
     if ( mesh->htab.geom )
       MMG5_DEL_MEM(mesh,mesh->htab.geom);
 
-    mesh->namax = MG_MAX((MMG5_int)(1.5*mesh->na),MMG3D_NAMAX);
+    //mesh->namax = MG_MAX((MMG5_int)(1.5*mesh->na),MMG3D_NAMAX);
+    mesh->namax = MG_MAX(MG_MAX((MMG5_int)(1.5*mesh->na),(MMG5_int)(nnmt)),MMG3D_NAMAX);
     if ( !MMG5_hNew(mesh,&mesh->htab,mesh->na,3*mesh->namax) )
       return 0;
 
