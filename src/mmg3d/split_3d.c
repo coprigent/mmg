@@ -173,10 +173,10 @@ int MMG5_split1(MMG5_pMesh mesh,MMG5_pSol met,MMG5_int k,MMG5_int vx[6],int8_t m
 
   if ( pt->xt ) {
     /* Reset edge tag */
-    xt.tag [taued[3]] = 0;  xt.tag [taued[4]] = 0;
-    xt1.tag[taued[1]] = 0;  xt1.tag[taued[2]] = 0;
-    xt.edg [taued[3]] = 0;  xt.edg [taued[4]] = 0;
-    xt1.edg[taued[1]] = 0;  xt1.edg[taued[2]] = 0;
+    xt.tag [taued[3]] = xt.ftag[tau[3]];  xt.tag [taued[4]] = xt.ftag[tau[2]];
+    xt1.tag[taued[1]] = xt.ftag[tau[3]];  xt1.tag[taued[2]] = xt.ftag[tau[2]];
+    xt.edg [taued[3]] = xt.ref[tau[3]];  xt.edg [taued[4]] = xt.ref[tau[2]];
+    xt1.edg[taued[1]] = xt.ref[tau[3]];  xt1.edg[taued[2]] = xt.ref[tau[2]];
     xt.ref [  tau[0]] = 0;  xt.ftag [ tau[0]] = 0;  MG_SET( xt.ori, tau[0]);
     xt1.ref[  tau[1]] = 0;  xt1.ftag[ tau[1]] = 0;  MG_SET(xt1.ori, tau[1]);
   }
