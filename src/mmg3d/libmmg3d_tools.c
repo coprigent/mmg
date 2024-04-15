@@ -894,6 +894,7 @@ int MMG3D_Get_numberOfNonBdyTriangles(MMG5_pMesh mesh, MMG5_int* nb_tria) {
   MMG5_Hash   hash;
   int         i;
   MMG5_int    ref,*adja,j,k,iel;
+  MMG5_int    *permtria = NULL;
 
   *nb_tria = 0;
   memset ( &hash, 0x0, sizeof(MMG5_Hash));
@@ -931,7 +932,7 @@ int MMG3D_Get_numberOfNonBdyTriangles(MMG5_pMesh mesh, MMG5_int* nb_tria) {
       return 0;
     }
     /* identify surface mesh */
-    if ( !MMG5_chkBdryTria(mesh) ) {
+    if ( !MMG5_chkBdryTria(mesh,permtria) ) {
       fprintf(stderr,"\n  ## Error: %s: Boundary problem.\n",__func__);
       return 0;
     }

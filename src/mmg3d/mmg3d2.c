@@ -2267,7 +2267,7 @@ int MMG3D_mmg3d2(MMG5_pMesh mesh,MMG5_pSol sol,MMG5_pSol met) {
     return 0;
   }
 
-  if ( !MMG5_chkBdryTria(mesh) ) {
+  if ( !MMG5_chkBdryTria(mesh,permtria) ) {
     fprintf(stderr,"\n  ## Boundary problem. Exit program.\n");
     return 0;
   }

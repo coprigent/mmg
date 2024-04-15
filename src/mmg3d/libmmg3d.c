@@ -96,7 +96,7 @@ void MMG3D_Free_topoTables(MMG5_pMesh mesh) {
  *
  * \warning mesh must be packed and hashed
  */
-MMG5_int MMG3D_bdryBuild(MMG5_pMesh mesh) {
+MMG5_int MMG3D_bdryBuild(MMG5_pMesh mesh, MMG5_int *permtria) {
   MMG5_pTetra pt;
   MMG5_hgeom  *ph;
   MMG5_int    k,nr;
@@ -108,7 +108,7 @@ MMG5_int MMG3D_bdryBuild(MMG5_pMesh mesh) {
     MMG5_DEL_MEM(mesh,mesh->tria);
   mesh->nt = 0;
 
-  if ( !MMG5_chkBdryTria(mesh) ) {
+  if ( !MMG5_chkBdryTria(mesh,permtria) ) {
     fprintf(stderr,"\n  ## Error: %s: unable to rebuild triangles\n",__func__);
     return -1;
   }
@@ -1106,7 +1106,7 @@ int MMG3D_mmg3dlib(MMG5_pMesh mesh,MMG5_pSol met) {
   }
 
   /* mesh analysis */
-  if ( !MMG3D_analys(mesh) ) {
+  if ( !MMG3D_analys(mesh,permtria) ) {
     if ( !MMG5_unscaleMesh(mesh,met,NULL) )    _LIBMMG5_RETURN(mesh,met,sol,MMG5_STRONGFAILURE);
     _LIBMMG5_RETURN(mesh,met,sol,MMG5_LOWFAILURE);
   }

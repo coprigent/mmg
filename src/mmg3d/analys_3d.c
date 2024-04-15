@@ -1321,7 +1321,7 @@ int MMG3D_nmgeom(MMG5_pMesh mesh){
  *         - Open boundary points (MG_OPNBDY) are treated as nm points.
  *
  */
-int MMG3D_analys(MMG5_pMesh mesh) {
+int MMG3D_analys(MMG5_pMesh mesh, MMG5_int *permtria) {
   MMG5_Hash hash;
   int       ier;
   
@@ -1357,7 +1357,7 @@ int MMG3D_analys(MMG5_pMesh mesh) {
   }
   
   /* identify surface mesh */
-  if ( !MMG5_chkBdryTria(mesh) ) {
+  if ( !MMG5_chkBdryTria(mesh,permtria) ) {
     fprintf(stderr,"\n  ## Boundary problem. Exit program.\n");
     return 0;
   }

@@ -232,7 +232,7 @@ int  MMG3D_zaldy(MMG5_pMesh mesh);
 void MMG5_freeXTets(MMG5_pMesh mesh);
 void MMG5_freeXPrisms(MMG5_pMesh mesh);
 void MMG3D_Free_topoTables(MMG5_pMesh mesh);
-int  MMG5_chkBdryTria(MMG5_pMesh mesh);
+int  MMG5_chkBdryTria(MMG5_pMesh mesh, MMG5_int *permtria);
 int  MMG5_mmg3dBezierCP(MMG5_pMesh mesh,MMG5_Tria *pt,MMG5_pBezier pb,int8_t ori);
 extern int    MMG5_BezierTgt(double c1[3],double c2[3],double n1[3],double n2[3],double t1[3],double t2[3]);
 extern double MMG5_BezierGeod(double c1[3], double c2[3], double t1[3], double t2[3]);
@@ -276,7 +276,7 @@ int  MMG5_chkcol_bdy(MMG5_pMesh,MMG5_pSol,MMG5_int,int8_t,int8_t,int64_t*,int,MM
 int  MMG3D_chkmanicoll(MMG5_pMesh,MMG5_int,int,int,MMG5_int,MMG5_int,MMG5_int,MMG5_int,int8_t,int8_t);
 int  MMG3D_chkmani(MMG5_pMesh mesh);
 MMG5_int  MMG5_colver(MMG5_pMesh,MMG5_pSol,int64_t *,int,int8_t,int8_t);
-int  MMG3D_analys(MMG5_pMesh mesh);
+int  MMG3D_analys(MMG5_pMesh mesh, MMG5_int *permtria);
 void MMG3D_set_reqBoundaries(MMG5_pMesh mesh);
 int  MMG5_chkVertexConnectedDomains(MMG5_pMesh mesh);
 int  MMG5_norver(MMG5_pMesh mesh);

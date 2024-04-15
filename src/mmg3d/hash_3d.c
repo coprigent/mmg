@@ -1544,7 +1544,7 @@ int MMG5_bdryTria(MMG5_pMesh mesh, MMG5_int ntmesh) {
  * - Set to required the triangles at interface betwen prisms and tet.
  *
  */
-int MMG5_chkBdryTria(MMG5_pMesh mesh) {
+int MMG5_chkBdryTria(MMG5_pMesh mesh, MMG5_int *permtria) {
   MMG5_pTetra    pt,pt1;
   MMG5_pPrism    pp,pp1;
   MMG5_pTria     ptt,pttnew;
@@ -1788,6 +1788,10 @@ int MMG5_chkBdryTria(MMG5_pMesh mesh) {
       if ( k!=nbl ) {
         pttnew = &mesh->tria[nbl];
         memcpy(pttnew,ptt,sizeof(MMG5_Tria));
+        if ( permtria ) {
+          permtria[k] = nbl;
+          permtria[nbl] = k; 
+        }
       }
       ++nbl;
     }
