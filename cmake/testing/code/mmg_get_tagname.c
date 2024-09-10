@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "libmmgcommon_private.h"
+#include "mmg/mmg3d/libmmg3d.h"
 
 int main() {
 
