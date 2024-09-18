@@ -474,6 +474,7 @@ IF ( NOT WIN32 )
     )
     if ( SCOTCH_FOUND AND NOT USE_SCOTCH MATCHES OFF )
       target_include_directories( mmg_get_tagname BEFORE PUBLIC ${SCOTCH_INCLUDE_DIRS} )
+      SET( GET_TAGNAME_LIBRARIES ${LIBRARIES})
     ENDIF ( )
 
     IF( ELAS_FOUND AND NOT USE_ELAS MATCHES OFF )
