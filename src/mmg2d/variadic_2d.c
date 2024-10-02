@@ -186,6 +186,7 @@ int MMG2D_Init_mesh_var( va_list argptr ) {
 
   while ( (typArg = va_arg(argptr,int          )) != MMG5_ARG_end )
   {
+    printf("typArg = %d\n", typArg);
     switch ( typArg )
     {
     case(MMG5_ARG_ppMesh):
