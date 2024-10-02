@@ -33,7 +33,7 @@ jobs:
     strategy:
         fail-fast: false
         matrix:
-            os: [ubuntu-20.04,macos-12]
+            os: [ubuntu-20.04,macos-15-large]
             pattern: [on,off]
             pointmap: [off]
             scotch: [on,off]
